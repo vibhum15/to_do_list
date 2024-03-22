@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Day</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+    <h1><%= listTitle %> </h1>
+    <ul>
+        <% for (let i = 0; i < arr.length; i++) { %>
+            <li>
+                <form action="http://localhost:3000/<%=path%>/delete" method="post">
+                <input type="checkbox"  name="items" value="<%= arr[i]._id %>"  onchange="this.form.submit()">
+                <label for="item_<%= i %>"><%= arr[i].para %></label>
+            </form>
+            </li>
+        <% } %>
+    </ul>
+    <form action="/<%=path%>" method="post"> 
+        <input type="text" name="name_work">
+        <button type="submit" name="button" value="<%= listTitle %>">ADD</button>
+    </form>
+</body>
+</html>
